@@ -1,0 +1,10 @@
+入职第一天，又跟leader（maybe）回顾了一下我的项目，感觉还是没有很多东西可以挖掘。还是数据库吧，毕竟是C++还有一定的技术基础，web项目写python也是可以的，只是入门可能慢了点。
+
+django web开发（python），实现一个app功能包括：
+1、向制定的ip:port发送UDP包
+2、接收返回
+
+
+superuser：admin administrator
+
+DATA = ('Mountain View, CA 94040', 'Sunnyvale, CA', 'Los Altos, 94023', 'Cupertino 93412')

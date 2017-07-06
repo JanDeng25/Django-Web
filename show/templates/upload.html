@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<title>上传数据</title>
+	<style type="text/css">
+	input[type="checkbox"] {
+    display: none;	
+	}
+	label[for="upload_File-clear_id"]{
+		display: none;
+	}
+	label{
+		display: block; 
+		padding: 4px 10px 0 0;
+    	float: left;
+    	width: 100px;
+	}
+	.text{text-align: center}
+	.div{margin:0 auto; width: 450px;}
+	</style>
+</head>
+<body>
+	<div>
+	<h3 style="text-align: left; color:taupe;"><a href = "{% url 'show:service_list' %}">返回服务列表</a></h3>
+	</div>
+	<h2 class = "text">{{fn}}服务的配置文件上传</h2>
+	<div class = "div">
+	<form method = "post" enctype = "multipart/form-data">
+		{% csrf_token %}
+		{{ff.as_p}}
+		<center>
+		<input type = "submit" value = "上传">
+		<input type = "reset" value = "重置">
+		<center>
+	</form>
+	<div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<title>File Detail</title>
+	<style type="text/css">
+	.text{text-align: center}
+	.bottom{border-bottom-style: dashed; border-bottom-width: 1px}
+	th{background-color:#c3dde0; width:200px;}
+	td{width:200px;}
+	.right{float:right;}
+	.left{float: left;}
+	h4{color: red}
+	</style>
+</head>
+<body>
+	<div>
+		<div class = "right">
+		<form method = "get" style="text-align: right;">
+			{% csrf_token %} 
+			<input type = "text" name = "search" />
+			<input type = "submit" value = "搜索">
+		</form>
+		</div>
+		<div>
+		<h3 style="text-align: left; color:taupe;"><a href = "{% url 'show:service_list' %}">返回服务列表</a></h3>
+		</div>
+
+	<!--
+		<div>
+			<select>
+				<option value = "name">内容</option>
+				<option value = "date">日期</option>
+			</select>
+		</div>
+	-->
+	</div>
+
+	<center>
+	<h2 class = "text">{{fn}}的配置列表</h2>
+	{% if keyword %}
+		<h4 >搜索：{{keyword}}</h4>
+	{% endif %}
+	<table border="1"  cellspacing="0" cellpadding="0">
+		<tr class = "text">
+			<th>配置文件</th>
+			<th>上传时间</th>
+			<th>配置更新描述</th>
+			<th>修改配置</th>
+		</tr>
+		{% for file in posts.object_list %}
+		<tr>
+			<td><a href = "{% url 'show:download_file' file.upload_File %}">{{file.upload_File}}</a></td>
+			<td>{{file.upload_date|date:"Y-m-d H:i:s"}}</td>
+			<td>{{file.content}}</td>
+			<td class = "text"><a href = "{% url 'show:modify_file' id=file.id fn=fn cont=file.content %}">修改</a></td>
+		</tr>
+		{% endfor%}
+	</table>
+	<br>
+	{% if posts.has_previous %}
+		<a href = "?p={{ posts.previous_page_number }}&search={{ keyword }}">上一页</a>
+	{% endif %}
+	<span>
+		{{ posts.number }} / {{ posts.paginator.num_pages }}
+	</span>
+	{% if posts.has_next %}
+		<a href = "?p={{ posts.next_page_number }}&search={{ keyword }}">下一页</a>
+	{% endif %}
+	</center>
+</body>
+</html>

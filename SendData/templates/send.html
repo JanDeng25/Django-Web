@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<title>发送数据</title>
+</head>
+<body>
+	<form method = "post">
+		{% csrf_token %} 
+		IP Address:
+		<input type = text name = ip>
+		Port:
+		<input type = text name = port><br>
+		Data:<br>
+		<textarea name = data rows = 3 cols = 60></textarea><br>
+		<input type = "submit" value = "发送">
+		<input type = "reset" value = "重置">
+	</form>
+</body>
+</html>
